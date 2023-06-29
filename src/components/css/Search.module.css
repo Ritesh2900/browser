@@ -1,0 +1,108 @@
+.mainDivOfSerachIcon {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    border-radius: 20px;
+    background-color: rgb(67, 63, 63);
+}
+
+.input {
+    flex: 1;
+    border: none;
+    outline: none;
+    text-indent: 10px;
+    background-color: rgb(67, 63, 63);
+    color: white;
+}
+
+.magnifyingGlass {
+    margin-top: 5px;
+    font-size: 17px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 1;
+    color: "#9da0a4"
+}
+
+.fa-magnifying-glass:before, .fa-search:before {
+    color: white;
+}
+.fa-microphone {
+    font-size: 17px;
+    margin-right: 11px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+::placeholder {
+    color: rgb(121, 117, 117);
+}
+.options{
+    width:1000px;
+}
+.topOptions{
+    margin: 0px 10px;
+    border: 1px solid grey;
+    border-radius: 50px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+.topOptions:hover{
+    color: white;
+    background-color: rgb(88, 85, 85);
+}
+hr{
+    border: 0.1px solid grey;
+    margin-top: 18px;
+    margin-bottom: 5px;
+}
+.searchResult{
+    font-size: 15px;
+    margin-left: 70px;
+    color: rgb(172, 168, 168);
+}
+
+.relatedSearch{
+    background: grey;
+    width: fit-content;
+    padding: 8px 20px;
+    border-radius: 5px;
+    width: 400px;
+}
+.webIconStyle{
+    height: 41px;
+    width: 34px;
+    object-fit: contain;
+    border-radius: 147px;
+}
+
+.labelHead{
+    margin-left: 10px;
+}
+/* CSS CODE FOR MEDIA QUERY */
+@media only screen and (max-width: 600px) {
+.mobileResp{
+    display: none;
+}
+.options{
+    overflow-y: auto;
+    width: 331px;
+    white-space: nowrap;
+    padding: 5px 5px;
+}
+.options::-webkit-scrollbar {
+    height: 1px;              
+    width: 1px;               
+    border: none;
+    align-items: center;
+  }
+
+.searchResult{
+    margin-left: 0px;
+}
+.iconStyleThreeDots{
+    display: none;
+}
+}

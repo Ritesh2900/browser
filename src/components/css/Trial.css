@@ -1,0 +1,9 @@
+.suggestOption:hover{
+background-color: grey;
+color: white;
+cursor: pointer;
+}
+.suggestionDiv{
+    background-color:white;
+    color:black
+}

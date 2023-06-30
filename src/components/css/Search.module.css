@@ -38,7 +38,7 @@
     color: rgb(121, 117, 117);
 }
 .options{
-    width:1000px;
+    width:1200px;
 }
 .topOptions{
     margin: 0px 10px;
@@ -52,6 +52,22 @@
 .topOptions:hover{
     color: white;
     background-color: rgb(88, 85, 85);
+}
+.realtedStyle{
+    background-color: grey;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.reatedTextSerahc{
+    font-size: 19px;
+    margin-left: 20px;
+}
+.googleLogo{
+    width: 200px;
+    height: 67px;
+}
+.mainPara{
+    padding: 3px 21px;
 }
 hr{
     border: 0.1px solid grey;

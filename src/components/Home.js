@@ -1,21 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import myStyle from "./css/Home.module.css";
 import menu from "./img/menu.png";
 import profile from "./img/profile.jpg";
+import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { allActions } from "../state";
 import { bindActionCreators } from "redux";
 
+
 export default function Home() {
   const [display, setDisplay] = useState(false);
   const [value, setValue] = useState("");
-
+  const [suggesstion, setSuggesstion] = useState([]);
+  const [action, setAction] = useState(false);
+  const ref = useRef(null);
   // code for using redux for setting the serah input data
   const dispatch = useDispatch();
   const { setSearchData } = bindActionCreators(allActions, dispatch);
 
   const navigate = useNavigate();
+
+  // code for useeffect
+
+  useEffect(() => {
+    const firstTimeSearch = async () => {
+      let apiKey = `/api2/complete/search?client=chrome&q=${value}&hl=en`;
+      let fetchData = await fetch(apiKey);
+      let convertData = await fetchData.json();
+      setSuggesstion(convertData);
+      setAction(true);
+    };
+    firstTimeSearch();
+  }, [value]);
+
+  // code for set data to input fiel by suggestion method
+  const setOptionVal = (data) => {
+    setValue(data);
+    ref.current.focus();
+  };
+
   // code for function for toogle them
   const toogleIcon = () => {
     setDisplay(!display);
@@ -23,8 +47,7 @@ export default function Home() {
   // function for handel enter submit
   const handelKeyPress = (e) => {
     if (e.keyCode === 13) {
-      console.log("You Press Enter");
-      setSearchData(value)
+      setSearchData(value);
       navigate("/search");
     }
   };
@@ -65,6 +88,7 @@ export default function Home() {
                 type="text"
                 name="search"
                 id="search"
+                ref={ref}
                 value={value}
                 className={myStyle.searchInput}
                 placeholder="Search Google or type a URL"
@@ -76,6 +100,25 @@ export default function Home() {
               />
               <i className={`fa-solid fa-microphone ${myStyle.microphone}`}></i>
             </div>
+          </div>
+          {/* div for suggestion showing */}
+
+          <div className={`${myStyle.mainDivOfSuggestion}`}>
+            {action
+              ? suggesstion[1].map((ele) => {
+                  return (
+                    <p
+                      className={`${myStyle.suggestOption}`}
+                      onClick={() => setOptionVal(ele)} key={uuidv4()}
+                    >
+                      <i
+                        className={`fa-solid fa-magnifying-glass ${myStyle.optionGlass}`}
+                      ></i>{" "}
+                      <span className={myStyle.optionText}>{ele}</span>
+                    </p>
+                  );
+                })
+              : ""}
           </div>
 
           {/* code for two btns */}
@@ -110,30 +153,30 @@ export default function Home() {
               className={`col-xl-3 col-lg-3 col-md-6 col-sm-10 col-10 ${myStyle.allAppOptionsStyle}`}
             >
               <div className="row">
+
+              <div className="col-3 d-flex justify-content-center">
+                <i className={`fa-brands fa-youtube ${myStyle.appIconStyle}`} style={{color: "#eb0f0f"}}></i>
+                </div>
+
+                <div className="col-3 d-flex justify-content-center">
+                  <i
+                    className={`fa-brands fa-google-plus-g ${myStyle.appIconStyle}`}
+                    style={{ color: "rgb(2, 2, 41); " }}
+                  ></i>
+                </div>
+
+               
+
                 <div className="col-3 d-flex justify-content-center">
                   <i
                     className={`fa-brands fa-google-drive ${myStyle.appIconStyle}`}
-                    style={{ color: "#0959e1" }}
+                    style={{ color: "orangered" }}
                   ></i>
                 </div>
 
                 <div className="col-3 d-flex justify-content-center">
                   <i
-                    className={`fa-brands fa-google-drive ${myStyle.appIconStyle}`}
-                    style={{ color: "#0959e1" }}
-                  ></i>
-                </div>
-
-                <div className="col-3 d-flex justify-content-center">
-                  <i
-                    className={`fa-brands fa-google-drive ${myStyle.appIconStyle}`}
-                    style={{ color: "#0959e1" }}
-                  ></i>
-                </div>
-
-                <div className="col-3 d-flex justify-content-center">
-                  <i
-                    className={`fa-brands fa-google-drive ${myStyle.appIconStyle}`}
+                    className={`fa-sharp fa-solid fa-location-dot ${myStyle.appIconStyle}`}
                     style={{ color: "#0959e1" }}
                   ></i>
                 </div>

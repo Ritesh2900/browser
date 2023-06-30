@@ -50,6 +50,46 @@
     background-color: white;
 }
 
+.mainDivOfSuggestion{
+    width: 50%;
+    border-radius: 20px;
+    background-color: white;
+    margin: auto;
+    margin-top: 1px;
+    color: black;
+    overflow: auto;
+    text-indent: 20px;
+}
+
+.mainDivOfSuggestion::-webkit-scrollbar {
+    height: 1px;              
+    width: 1px;               
+    border: none;
+    align-items: center;
+  }
+
+.suggestOption{
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    margin-left: -25px;
+}
+.optionText{
+    margin-left: 15px;
+}
+.optionGlass{
+    margin-top: 5px;
+    font-size: 17px;
+    margin-left: 10px;
+    color: grey;
+}
+
+.suggestOption:hover{
+    background-color: rgb(231, 226, 226);
+    color: black;
+    
+    }
+
 .glass {
     margin-top: 5px;
     font-size: 17px;
@@ -148,6 +188,11 @@ footer:hover {
     .googleOfferedStyle {
         text-align: center;
         margin-top: 70px;
+    }
+    .mainDivOfSuggestion{
+        width: 85%;
+     padding: 0px 20px;  
+    
     }
 
 }

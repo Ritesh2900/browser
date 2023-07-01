@@ -17,7 +17,7 @@ export default function Search() {
   useEffect(() => {
     const firstTimeSearch = async () => {
       setProgress(10);
-      let apiKey = `https://serpapi.com/search.json?api_key=${process.env.REACT_APP_GOOGLE_API}&engine=google&q=${option}&location=Seattle-Tacoma,+WA,+Washington,+United+States&hl=en&gl=in&google_domain=google.com&num=10&start=10&safe=active`;
+      let apiKey = `http://localhost:8000/search/${option}`;
       setProgress(30);
       let fetchData = await fetch(apiKey);
       setProgress(60);

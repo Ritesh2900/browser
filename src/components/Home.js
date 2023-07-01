@@ -25,7 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     const firstTimeSearch = async () => {
-      let apiKey = `/api2/complete/search?client=chrome&q=${value}&hl=en`;
+      let apiKey = `https://suggestqueries.google.com/complete/search?client=chrome&q=${value}&hl=en`;
       let fetchData = await fetch(apiKey);
       let convertData = await fetchData.json();
       setSuggesstion(convertData);
